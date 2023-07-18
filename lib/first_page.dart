@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter2023/res/colors.dart';
-import 'package:flutter2023/res/image.dart';
-import 'package:flutter2023/res/string.dart';
+import 'package:flutter2023/res/images.dart';
+import 'package:flutter2023/res/strings.dart';
 
+import 'component/sizedbox.dart';
+  
 class Page1 extends StatefulWidget {
   const Page1({super.key});
 
@@ -35,14 +37,10 @@ class _Page1State extends State<Page1> {
           welcome1,
           scale: 2.5,
         ),
-        SizedBox(
-          height: 20,
-        ),
+        addVerticalSpace(20),
         Text(ConstString.WRITELISTS,
             style: TextStyle(color: BLACK, fontSize: 24)),
-        SizedBox(
-          height: 10,
-        ),
+        addVerticalSpace(10),
         Text(ConstString.WRITEYOURTASKS,
             style: TextStyle(color: GREY, fontSize: 17))
       ]),

@@ -1,37 +1,30 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter2023/res/colors.dart';
-import 'package:flutter2023/res/image.dart';
-import 'package:flutter2023/res/string.dart';
+import 'package:flutter2023/res/images.dart';
+import 'package:flutter2023/res/strings.dart';
+import 'component/sizedbox.dart';
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 class Login extends StatefulWidget {
   const Login({super.key});
-
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(appBar: AppBar(),
-      backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: WHITE,
       body: SafeArea(
         child: SingleChildScrollView(
             child: Column(
           children: [
-            SizedBox(
-              height: 150,
-            ),
+            addVerticalSpace(150),
             Image.asset(plango),
-          
             login(
               labeltext: ConstString.USERNAME,
             ),
-        
             login(
               labeltext: ConstString.PASSWORD,
             ),
@@ -41,72 +34,71 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                   ConstString.DONTHAVEACCOUNT,
-                    style: TextStyle(color:GREY2),
+                    ConstString.DONTHAVEACCOUNT,
+                    style: TextStyle(color: GREY2),
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.of(context).pushNamed('singup');
                     },
                     child: Text(
-                   ConstString.CLICKHERE,
-                      style: TextStyle(color:BASECOLOR, fontSize: 15),
+                      ConstString.CLICKHERE,
+                      style: TextStyle(color: BASECOLOR, fontSize: 15),
                     ),
                   )
                 ],
               ),
             ),
-             MaterialButton(
+            MaterialButton(
               padding: EdgeInsets.all(8),
-              
               onPressed: () {
-              Navigator.of(context).pushNamed('homepage');
+                Navigator.of(context).pushNamed('homepage');
               },
-              color:BASECOLOR,
+              color: BASECOLOR,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               child: Text(
-               ConstString.LOGIN,
-                style: TextStyle(color:WHITE, fontSize: 15),
+                ConstString.LOGIN,
+                style: TextStyle(color: WHITE, fontSize: 15),
               ),
             )
-          
           ],
         )),
       ),
     );
   }
 }
+
+// ignore: camel_case_types
 class login extends StatelessWidget {
   const login({
     Key? key,
     this.labeltext,
   }) : super(key: key);
+  // ignore: prefer_typing_uninitialized_variables
   final labeltext;
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          TextFormField(            
-              cursorColor:BASECOLOR,
+          TextFormField(
+              cursorColor: BASECOLOR,
               decoration: InputDecoration(
                 labelText: labeltext,
-                labelStyle: TextStyle(color:GREY2, fontSize: 17),
+                labelStyle: TextStyle(color: GREY2, fontSize: 17),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color:BASECOLOR,
+                      color: BASECOLOR,
                     )),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color:BASECOLOR,
+                      color: BASECOLOR,
                     )),
               )),
-               
         ],
       ),
     );

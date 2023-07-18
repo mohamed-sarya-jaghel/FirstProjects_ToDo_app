@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter2023/res/colors.dart';
-import 'package:flutter2023/res/image.dart';
-import 'package:flutter2023/res/string.dart';
+import 'package:flutter2023/res/images.dart';
+import 'package:flutter2023/res/strings.dart';
+
+import 'component/sizedbox.dart';
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 class Singup extends StatefulWidget {
@@ -22,9 +24,7 @@ class _SingupState extends State<Singup> {
         child: SingleChildScrollView(
             child: Column(
           children: [
-            SizedBox(
-              height: 150,
-            ),
+            addVerticalSpace(150),
             Image.asset(plango),
             singup(
               labeltext: ConstString.EMAIL,

@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter2023/res/colors.dart';
-import 'package:flutter2023/res/image.dart';
-import 'package:flutter2023/res/string.dart';
+import 'package:flutter2023/res/images.dart';
+import 'package:flutter2023/res/strings.dart';
+import 'component/sizedbox.dart';
 
 // ignore: use_key_in_widget_constructors
 class Test extends StatefulWidget {
@@ -26,16 +26,15 @@ class TestState extends State<Test> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(right: 58, top: 10),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      color: BLACK, fontWeight: FontWeight.bold, fontSize: 22),
-                ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
+                  padding: EdgeInsets.only(right: 58, top: 10),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        color: BLACK,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22),
+                  )),
+              addVerticalSpace(12),
               Text(
                   // ignore: prefer_interpolation_to_compose_strings
                   totalTasks.toString() +
@@ -46,7 +45,7 @@ class TestState extends State<Test> {
                       ' ' +
                       ConstString.COMPLETED,
                   style: TextStyle(color: GREY, fontSize: 10.5)),
-              SizedBox(height: 11),
+              addVerticalSpace(11),
               Column(
                 children: complTasks == 0
                     ? [
@@ -87,13 +86,29 @@ class TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       backgroundColor: WHITE,
       body: Column(
         children: [
           SafeArea(
             child: Column(
               children: [
+                Container(
+                  padding: EdgeInsets.all(25),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(Icons.arrow_back, color: GREY2),
+                      ),
+                      Text(
+                        ConstString.LISTS,
+                        style: TextStyle(color: GREY2, fontSize: 15),
+                      )
+                    ],
+                  ),
+                ),
                 Row(
                   children: [
                     Padding(
@@ -111,9 +126,7 @@ class TestState extends State<Test> {
               ],
             ),
           ),
-          SizedBox(
-            height: 15,
-          ),
+          addVerticalSpace(15),
           Container(
               decoration: BoxDecoration(
                 color: WHITE,
@@ -133,9 +146,7 @@ class TestState extends State<Test> {
                         search,
                         scale: 1,
                       )),
-                  SizedBox(
-                    width: 7,
-                  ),
+                  addHorizontallSpace(7),
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
@@ -196,6 +207,7 @@ class TestState extends State<Test> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(20),
                                     child: Container(
+                                      width: 750,
                                       color: WHITE1.withOpacity(0.5),
                                       child: TextField(
                                           decoration: InputDecoration(
@@ -205,25 +217,28 @@ class TestState extends State<Test> {
                                                           20)),
                                               labelText: ConstString.GROUPNAME,
                                               labelStyle: TextStyle(
-                                                  color: GREY, fontSize: 18))),
+                                                  color: GREY, fontSize: 22))),
                                     ),
                                   )),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.of(context).pushNamed('home');
-                                },
-                                child: Container(
-                                    width: 350,
-                                    height: 65,
-                                    decoration: BoxDecoration(
+                              SizedBox(
+                                width: 620,
+                                height: 60,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pushNamed('home');
+                                  },
+                                  child: Container(
+                                      decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        color: BASECOLOR),
-                                    child: Center(
-                                        child: Text(
-                                      ConstString.CREATGROUP,
-                                      style:
-                                          TextStyle(color: WHITE, fontSize: 18),
-                                    ))),
+                                        color: BASECOLOR,
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                        ConstString.CREATGROUP,
+                                        style: TextStyle(
+                                            color: WHITE, fontSize: 22),
+                                      ))),
+                                ),
                               )
                             ]));
                       });

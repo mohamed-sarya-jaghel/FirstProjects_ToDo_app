@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter2023/res/colors.dart';
-import 'package:flutter2023/res/image.dart';
-import 'package:flutter2023/res/string.dart';
+import 'package:flutter2023/res/images.dart';
+import 'package:flutter2023/res/strings.dart';
+
+import 'component/sizedbox.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -35,10 +37,26 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
         backgroundColor: WHITE,
         body: SafeArea(
             child: Column(children: [
+          Container(
+            padding: EdgeInsets.all(25),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back, color: GREY2),
+                ),
+                Text(
+                  ConstString.LISTS,
+                  style: TextStyle(color: GREY2, fontSize: 15),
+                )
+              ],
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,15 +68,13 @@ class _HomeState extends State<Home> {
                 ConstString.TASKS_COMPLETED,
                 style: TextStyle(color: GREY, fontSize: 10),
               ),
-              SizedBox(
-                height: 35,
-              ),
+              addVerticalSpace(35),
               Container(
                   decoration: BoxDecoration(
                     color: WHITE,
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  width: 317,
+                  width: MediaQuery.of(context).size.width,
                   height: 46,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 32),
@@ -72,9 +88,7 @@ class _HomeState extends State<Home> {
                             search,
                             scale: 1,
                           )),
-                      SizedBox(
-                        width: 7,
-                      ),
+                      addHorizontallSpace(7),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -133,9 +147,7 @@ class _HomeState extends State<Home> {
                       }),
                 ));
           }).toList()),
-          SizedBox(
-            height: 45,
-          ),
+          addVerticalSpace(45)
         ])));
   }
 }
